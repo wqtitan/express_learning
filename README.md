@@ -30,6 +30,13 @@ app.listen(4000, () => {
 app.use(express.static("public"));
 
 app.use("/static", express.static("public"));
+
+const Product = mongoose.model(
+  "Product",
+  new mongoose.Schema({
+    title: String,
+  })
+);
 ```
 
 ## 4 cors 跨域请求
@@ -41,3 +48,16 @@ app.use("/static", express.static("public"));
 `fetch('http://localhost:4000/products').then(res => res.json()).then(data => console.log(data))`
 
 `res.json()`方法接收一个 Response 流，并将其读取完成。返回一个 Promise，Promise 的解析 resolve 结果是将文本体解析为 JSON。
+
+## 5 MongoDB 基础
+
+`npm i mongoose`
+
+```js
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/express-test", { useUnifiedTopology: true, useNewUrlParser: true });
+```
+
+插入数据`insertMany()`
+
+获取数据`find()`
