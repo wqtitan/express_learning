@@ -79,3 +79,30 @@ app.get("/products/:id", async (req, res) => {
   res.send(data);
 });
 ```
+
+## 7
+
+VS Code 安装 REST Client 用来测试请求接口
+
+根目录中创建 test.http 文件
+
+```http
+@uri=http://localhost:4000/
+###
+
+GET {{uri}}
+###
+
+GET  {{uri}}products
+###
+
+POST {{uri}}products
+###
+
+POST {{uri}}products
+Content-Type: application/json
+
+{
+  "title":"产品4"
+}
+```

@@ -15,6 +15,7 @@ const Product = mongoose.model(
 // 向数据库插入数据
 // Product.insertMany([{ title: "产品1" }, { title: "产品2" }, { title: "产品3" }]);
 
+app.use(express.json());
 app.use(require("cors")());
 // #3 使用中间件，处理静态文件的托管
 // app.use(express.static("public"));
@@ -52,6 +53,13 @@ app.get("/products/:id", async (req, res) => {
   // 从URI中捕获参数id
   const data = await Product.findById(req.params.id);
   res.send(data);
+});
+
+// #7 POST请求
+app.post("/products", async (req, res) => {
+  const data = req.body;
+  const product = await Product.create(data);
+  res.send(product);
 });
 
 app.listen(4000, () => {
