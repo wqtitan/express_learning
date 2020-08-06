@@ -41,7 +41,17 @@ app.get("/about", (req, res) => {
 
 // 从数据库取数据
 app.get("/products", async (req, res) => {
-  res.send(await Product.find());
+  // .skip(1).limit(2) 跳过1条，展示2条  用于分页
+  // const data = await Product.find().skip(1).limit(2);
+  // const data = await Product.find().where({ title: "产品1" });
+  const data = await Product.find().sort({ _id: -1 });
+  res.send(data);
+});
+// #6 动态URI
+app.get("/products/:id", async (req, res) => {
+  // 从URI中捕获参数id
+  const data = await Product.findById(req.params.id);
+  res.send(data);
 });
 
 app.listen(4000, () => {

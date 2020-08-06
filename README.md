@@ -61,3 +61,21 @@ mongoose.connect("mongodb://localhost:27017/express-test", { useUnifiedTopology:
 插入数据`insertMany()`
 
 获取数据`find()`
+
+## 6 MongoDB 查询
+
+`.skip(1).limit(2)` 跳过 1 条，展示 2 条
+
+`.where({ title: "产品1" })` 添加查询条件
+
+`.sort({ _id: -1 })` 倒序排列
+
+捕获参数
+
+```js
+app.get("/products/:id", async (req, res) => {
+  // 从URI中捕获参数id
+  const data = await Product.findById(req.params.id);
+  res.send(data);
+});
+```
