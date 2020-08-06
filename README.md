@@ -23,3 +23,11 @@ app.listen(4000, () => {
 ```
 
 终端 `nodemon server.js` 启动
+
+## 3 静态文件托管
+
+```js
+app.use(express.static("public"));
+
+app.use("/static", express.static("public"));
+```
