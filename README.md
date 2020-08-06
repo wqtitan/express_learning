@@ -31,3 +31,13 @@ app.use(express.static("public"));
 
 app.use("/static", express.static("public"));
 ```
+
+## 4 cors 跨域请求
+
+`npm i cors`
+
+`app.use(require("cors")());` 立即执行函数返回一个跨域可用的中间件，供 express 使用
+
+`fetch('http://localhost:4000/products').then(res => res.json()).then(data => console.log(data))`
+
+`res.json()`方法接收一个 Response 流，并将其读取完成。返回一个 Promise，Promise 的解析 resolve 结果是将文本体解析为 JSON。
