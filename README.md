@@ -106,3 +106,14 @@ Content-Type: application/json
   "title":"产品4"
 }
 ```
+
+## 8 PUT 修改数据库
+
+```js
+app.put("/products/:id", async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  product.title = req.body.title;
+  await product.save();
+  res.send(product);
+});
+```

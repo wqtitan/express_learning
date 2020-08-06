@@ -62,6 +62,14 @@ app.post("/products", async (req, res) => {
   res.send(product);
 });
 
+// #8 PUT请求 修改数据库
+app.put("/products/:id", async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  product.title = req.body.title;
+  await product.save();
+  res.send(product);
+});
+
 app.listen(4000, () => {
   console.log("App listening on port 4000");
 });

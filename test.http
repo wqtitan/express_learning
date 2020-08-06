@@ -11,3 +11,12 @@ Content-Type: application/json
 {
   "title":"产品4"
 }
+
+### 
+
+PUT {{uri}}products/5f2b94f05ffd270cd2437cef
+Content-Type: application/json
+
+{
+  "title":"产品8"
+}
